@@ -28,54 +28,22 @@ const endsInOneOrFive = (n) => {
     if (n % 10 === 1 || n % 10 === 5) {
         return true;
     }
+    return false;
 };
 
-const multiplesFiveOrThree = (n) => {
-    const stringified = n.toString();
-    for (let i = 0; i < stringified.length; ++i) {
-        if (+stringified[i] % 3 === 0 || +stringified[i] % 5 === 0) {
-            continue;
-        } else {
-            multiplesFiveOrThree = false;
-            break;
-        }
+function multiplesFiveOrThree(n) {
+    let num = n;
+  
+    while (num > 0) {
+      const digit = num % 10;
+      if (!(digit % 5 === 0 || digit % 3 ===0)) {
+        return false
+      }
+      num = (num - digit) / 10;
     }
-
-    // let stringified = n.toString();
-    // if (
-    //     stringified.length - (1 % 3) === 0 ||
-    //     stringified.length - (1 % 5) === 0
-    // ) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
-
-    // all digits are multiples of 3 or 5
-    // for loop to go through n
-
-    // let sum = 0;
-    // for (i = 3; i < n; i++) {
-    //     // check if a multiple of 3 or 5
-    //     if (i % 3 === 0 || i % 5 === 0) {
-    //         // return true if matches check
-    //         multiplesFiveOrThree = true;
-    //     }
-    //     return multiplesFiveOrThree;
-    // }
-
-    // -- harrison's while loop --
-    // while (n > 0) {
-    //     let digit = n % 10;
-    //     if (digit % 10 === 3 || digit % 10 === 5) {
-    //         return true;
-    //     }
-    //     n = (n - digit) / 10;
-    //     console.log("n", n);
-    // }
-    // return false;
-};
-
+    return true;
+  }
+  
 const isInteresting = (n) => {
     // prime
     // for (let i = n - 1; i > 1; --i) {
